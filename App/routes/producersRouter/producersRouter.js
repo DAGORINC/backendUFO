@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const upload = require('../../services/uploader');
+const upload = require('../../services/uploaderProducers');
 
 const producersActions = require('./producersActions');
 

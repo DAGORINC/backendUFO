@@ -1,6 +1,8 @@
 const express = require('express');
 require('dotenv').config();
 const producersRouter = require('./App/routes/producersRouter/producersRouter');
+const collectionsRouter = require('./App/routes/collectionsRouter/collectionsRouter');
+const furnitureRouter = require('./App/routes/furnitureRouter/furnitureRouter');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -24,6 +26,8 @@ app.use(cors());
 
 //routes
 app.use('/api', producersRouter);
+app.use('/api', collectionsRouter);
+app.use('/api', furnitureRouter);
 
 //server
 app.listen(port, function () {

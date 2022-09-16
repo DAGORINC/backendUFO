@@ -1,6 +1,5 @@
 const Producer = require('../../DataBase/models/producer');
 const fs = require('fs');
-const path = require('path');
 
 const getAllProducers = async (req, res) => {
 
@@ -27,7 +26,7 @@ const getProducer = async (req, res) => {
         const _id = req.params._id;
         const producer = await Producer.findOne({ _id: _id });
 
-        if (!producer) return res.send({ status: 400, message: `Nie znaleziono producenta.` })
+        if (!producer) return res.status(400).json({ message: `Nie znaleziono producenta.` })
 
         res.status(200).json({
             message: 'Success',
@@ -128,7 +127,7 @@ const deleteProducer = async (req, res) => {
         res.sendStatus(204);
 
     } catch (error) {
-        res.status(400).json({ message: `Nie usunięto użytkownika. ${error.message}` });
+        res.status(400).json({ message: `Nie usunięto producenta. ${error.message}` });
     }
 
 }

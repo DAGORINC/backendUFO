@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ProducerSchema = new mongoose.Schema({
+const ProducersSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -15,6 +15,6 @@ const ProducerSchema = new mongoose.Schema({
     }
 });
 
-const Producer = mongoose.model('Producer', ProducerSchema);
+const Producer = mongoose.model('Producer', ProducersSchema);
 
 module.exports = Producer;
