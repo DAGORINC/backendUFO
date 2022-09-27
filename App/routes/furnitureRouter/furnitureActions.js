@@ -46,14 +46,14 @@ const saveFurniture = async (req, res) => {
     const newFurniture = new Furniture({
         name: req.body.name,
         producer: req.body.producer,
-        collection: req.body.collection,
+        partCollection: req.body.collection,
         price: req.body.price,
         width: req.body.width,
         depth: req.body.depth,
         height: req.body.height,
         crossed: req.body.crossed,
         isPriceVissible: req.body.isPriceVissible,
-        image: req.file.path,
+        image: req.file.path
     })
 
     try {
@@ -73,7 +73,7 @@ const saveFurniture = async (req, res) => {
         });
 
     } catch (error) {
-        if (error) fs.unlinkSync(newFurniture.path);
+        if (error && newFurniture.path) fs.unlinkSync(newFurniture.path);
         return res.status(400).json({
             message: `Nie udało się dodać ${newFurniture.name} do bazy`
         })
@@ -89,7 +89,7 @@ const editFurniture = async (req, res) => {
 
         const name = req.body.name;
         const producer = req.body.producer;
-        const partCollection = req.body.partCollection;
+        const partCollection = req.body.collection;
         const price = req.body.price;
         const width = req.body.width;
         const depth = req.body.depth;

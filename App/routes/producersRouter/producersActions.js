@@ -25,6 +25,7 @@ const getProducer = async (req, res) => {
     try {
         const _id = req.params._id;
         const producer = await Producer.findOne({ _id: _id });
+        
 
         if (!producer) return res.status(400).json({ message: `Nie znaleziono producenta.` })
 
