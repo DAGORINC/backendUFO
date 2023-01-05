@@ -11,7 +11,7 @@ const CollectionsSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        requqired: true
+        required: true
     }
 });
 
