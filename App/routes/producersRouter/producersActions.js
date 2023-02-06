@@ -55,7 +55,7 @@ const saveProducer = async (req, res) => {
         if (!await newProducer.save()) {
             fs.unlinkSync(newProducer.logo)
             return res.status(400).json({
-                message: `Nie udało się zapisać użytkownika w bazie.`
+                message: `Nie udało się zapisać producenta w bazie.`
             });
         }
 
@@ -69,7 +69,7 @@ const saveProducer = async (req, res) => {
     } catch (error) {
         if (error) fs.unlinkSync(newProducer.logo);
         return res.status(400).json({
-            message: `Nie zapisano użytkownika. ${error.message}`
+            message: `Nie zapisano producenta. ${error.message}`
         })
     }
 }

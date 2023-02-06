@@ -52,6 +52,15 @@ const saveFurniture = async (req, res) => {
         depth: req.body.depth,
         height: req.body.height,
         crossed: req.body.crossed,
+        designedForTheLivingRoom: req.body.designedForTheLivingRoom,
+        designedForTheKitchen: req.body.designedForTheKitchen,
+        designedForTheBedroom: req.body.designedForTheBedroom,
+        designedForTheOffice: req.body.designedForTheOffice,
+        designedForTheYouthRoom: req.body.designedForTheYouthRoom,
+        designedForTheHallway: req.body.designedForTheHallway,
+        designedForTheChildrensRoom: req.body.designedForTheChildrensRoom,
+        designedForTheBathroom: req.body.designedForTheBathroom,
+        categories: req.body.categories,
         isPriceVissible: req.body.isPriceVissible,
         image: req.file.path
     })
@@ -95,6 +104,15 @@ const editFurniture = async (req, res) => {
         const depth = req.body.depth;
         const height = req.body.height;
         const crossed = req.body.crossed;
+        const designedForTheLivingRoom = req.body.designedForTheLivingRoom;
+        const designedForTheKitchen = req.body.designedForTheKitchen;
+        const designedForTheBedroom = req.body.designedForTheBedroom;
+        const designedForTheOffice = req.body.designedForTheOffice;
+        const designedForTheYouthRoom = req.body.designedForTheYouthRoom;
+        const designedForTheHallway = req.body.designedForTheHallway;
+        const designedForTheChildrensRoom = req.body.designedForTheChildrensRoom;
+        const designedForTheBathroom = req.body.designedForTheBathroom;
+        const categories = req.body.categories;
         const isPriceVissible = req.body.isPriceVissible;
         if (req.file) { image = req.file.path }
 
@@ -116,6 +134,15 @@ const editFurniture = async (req, res) => {
         if (depth) furniture.depth = depth;
         if (height) furniture.height = height;
         if (crossed) furniture.crossed = crossed;
+        if (designedForTheLivingRoom) furniture.designedForTheLivingRoom = designedForTheLivingRoom;
+        if (designedForTheKitchen) furniture.designedForTheKitchen = designedForTheKitchen;
+        if (designedForTheBedroom) furniture.designedForTheBerdoom = designedForTheBedroom;
+        if (designedForTheOffice) furniture.designedForTheOffice = designedForTheOffice;
+        if (designedForTheYouthRoom) furniture.designedForTheYouthRoom = designedForTheYouthRoom;
+        if (designedForTheHallway) furniture.designedForTheHallway = designedForTheHallway;
+        if (designedForTheChildrensRoom) furniture.designedForTheChildrensRoom = designedForTheChildrensRoom;
+        if (designedForTheBathroom) furniture.designedForTheBathroom = designedForTheBathroom;
+        if (categories) furniture.categories = categories;
         if (isPriceVissible) furniture.isPriceVissible = isPriceVissible;
         if (image) furniture.image = image;
 
@@ -144,7 +171,7 @@ const deleteFurniture = async (req, res) => {
 
         const furniture = await Furniture.findOne({ _id: _id });
 
-        if(!await furniture.deleteOne({ _id: _id })) return res.status(400).json({ message: `Nie usunięto mebla` });
+        if (!await furniture.deleteOne({ _id: _id })) return res.status(400).json({ message: `Nie usunięto mebla` });
 
         fs.unlinkSync(furniture.image)
         res.sendStatus(204);
