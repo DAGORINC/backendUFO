@@ -133,10 +133,10 @@ const editFurniture = async (req, res) => {
         if (width) furniture.width = width;
         if (depth) furniture.depth = depth;
         if (height) furniture.height = height;
-        if (crossed) furniture.crossed = crossed;
+        if (crossed) {furniture.crossed = crossed} else furniture.crossed = '';
         if (designedForTheLivingRoom) furniture.designedForTheLivingRoom = designedForTheLivingRoom;
         if (designedForTheKitchen) furniture.designedForTheKitchen = designedForTheKitchen;
-        if (designedForTheBedroom) furniture.designedForTheBerdoom = designedForTheBedroom;
+        if (designedForTheBedroom) furniture.designedForTheBedroom = designedForTheBedroom;
         if (designedForTheOffice) furniture.designedForTheOffice = designedForTheOffice;
         if (designedForTheYouthRoom) furniture.designedForTheYouthRoom = designedForTheYouthRoom;
         if (designedForTheHallway) furniture.designedForTheHallway = designedForTheHallway;
