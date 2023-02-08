@@ -128,7 +128,7 @@ const editFurniture = async (req, res) => {
 
         if (name) furniture.name = name;
         if (producer) furniture.producer = producer;
-        if (partCollection) furniture.partCollection = partCollection;
+        if (partCollection) {furniture.partCollection = partCollection} else furniture.partCollection = '';
         if (price) furniture.price = price;
         if (width) furniture.width = width;
         if (depth) furniture.depth = depth;
