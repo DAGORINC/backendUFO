@@ -6,8 +6,7 @@ const ProducersSchema = new mongoose.Schema({
         required: true
     },
     link: {
-        type: String,
-        required: true
+        type: String
     },
     logo: {
         type: String,

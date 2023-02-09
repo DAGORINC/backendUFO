@@ -45,6 +45,7 @@ const saveFurniture = async (req, res) => {
 
     const newFurniture = new Furniture({
         name: req.body.name,
+        description: req.body.description,
         producer: req.body.producer,
         partCollection: req.body.collection,
         price: req.body.price,
@@ -97,6 +98,7 @@ const editFurniture = async (req, res) => {
         const _id = req.params._id;
 
         const name = req.body.name;
+        const description = req.body.description;
         const producer = req.body.producer;
         const partCollection = req.body.collection;
         const price = req.body.price;
@@ -127,13 +129,14 @@ const editFurniture = async (req, res) => {
 
 
         if (name) furniture.name = name;
+        if (description) {furniture.description = description} else furniture.description = '';
         if (producer) furniture.producer = producer;
         if (partCollection) {furniture.partCollection = partCollection} else furniture.partCollection = '';
-        if (price) furniture.price = price;
-        if (width) furniture.width = width;
-        if (depth) furniture.depth = depth;
-        if (height) furniture.height = height;
-        if (crossed) {furniture.crossed = crossed} else furniture.crossed = null;
+        if (price) {furniture.price = price} else furniture.price = 0;
+        if (width) {furniture.width = width} else furniture.width = 0;
+        if (depth) {furniture.depth = depth} else furniture.depth = 0;
+        if (height) {furniture.height = height} else furniture.height = 0;
+        if (crossed) {furniture.crossed = crossed} else furniture.crossed = 0;
         if (designedForTheLivingRoom) furniture.designedForTheLivingRoom = designedForTheLivingRoom;
         if (designedForTheKitchen) furniture.designedForTheKitchen = designedForTheKitchen;
         if (designedForTheBedroom) furniture.designedForTheBedroom = designedForTheBedroom;

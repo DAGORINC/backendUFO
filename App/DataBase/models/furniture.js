@@ -25,7 +25,7 @@ const FurnitureSchema = new mongoose.Schema({
         type: Number,
     },
     crossed: {
-        type: String,
+        type: Number,
     },
     isPriceVissible: {
         type: Boolean,
@@ -69,7 +69,10 @@ const FurnitureSchema = new mongoose.Schema({
     image: {
         type: String,
         required: true,
-    }
+    },
+    description: {
+        type: String,
+    },
 });
 
 const Furniture = mongoose.model('Furniture', FurnitureSchema);
