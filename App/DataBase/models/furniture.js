@@ -14,18 +14,23 @@ const FurnitureSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
+        default: 0,
     },
     width: {
         type: Number,
+        default: 0,
     },
     depth: {
         type: Number,
+        default: 0,
     },
     height: {
         type: Number,
+        default: 0,
     },
     crossed: {
         type: Number,
+        default: 0,
     },
     isPriceVissible: {
         type: Boolean,
