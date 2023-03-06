@@ -22,12 +22,7 @@ require('./App/DataBase/mongoose');
 app.use(bodyParser.json());
 
 //Image static folder
-app.use('/storage', function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Cache-Control', 'no-cache');
-    next();
-  }, express.static('./storage'));
-  
+app.use(express.static(__dirname + '/public'));
 
 //fix cors
 app.use(cors());
