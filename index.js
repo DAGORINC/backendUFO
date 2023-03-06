@@ -31,6 +31,12 @@ app.use('/api', collectionsRouter);
 app.use('/api', furnitureRouter);
 app.use('/api', imageSliderRouter);
 
+//mixed-content
+app.use((req, res, next) => {
+    res.setHeader('Content-Security-Policy', 'upgrade-insecure-requests');
+    next();
+  });
+
 //server
 app.listen(port, function () {
     console.log(`Serwer działa na porcie: ${port}`);
