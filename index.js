@@ -34,18 +34,23 @@ app.use('/api', furnitureRouter);
 app.use('/api', imageSliderRouter);
 
 //ssl
-const privateKey = fs.readFileSync('/etc/letsencrypt/live/da-gor.pl/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('/etc/letsencrypt/live/da-gor.pl/cert.pem', 'utf8');
-const ca = fs.readFileSync('/etc/letsencrypt/live/da-gor.pl/chain.pem', 'utf8');
-const credentials = {
-    key: privateKey,
-    cert: certificate,
-    ca: ca
-};
+// const privateKey = fs.readFileSync('/etc/letsencrypt/live/da-gor.pl/privkey.pem', 'utf8');
+// const certificate = fs.readFileSync('/etc/letsencrypt/live/da-gor.pl/cert.pem', 'utf8');
+// const ca = fs.readFileSync('/etc/letsencrypt/live/da-gor.pl/chain.pem', 'utf8');
+// const credentials = {
+//     key: privateKey,
+//     cert: certificate,
+//     ca: ca
+// };
 
-//server
-const httpsServer = https.createServer(credentials, app);
+// //server
+// const httpsServer = https.createServer(credentials, app);
 
-httpsServer.listen(port, () => {
+// httpsServer.listen(port, () => {
+//     console.log(`Serwer działa na porcie: ${port}`);
+// });
+
+
+app.listen(port, function () {
     console.log(`Serwer działa na porcie: ${port}`);
 });
