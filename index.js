@@ -33,7 +33,7 @@ app.use('/api', collectionsRouter);
 app.use('/api', furnitureRouter);
 app.use('/api', imageSliderRouter);
 
-ssl
+// ssl
 const privateKey = fs.readFileSync('/etc/ssl/certs/pkey.key', 'utf8');
 const certificate = fs.readFileSync('/etc/ssl/certs/cert.crt', 'utf8');
 const credentials = {
