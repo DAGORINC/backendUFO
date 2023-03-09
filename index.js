@@ -34,11 +34,13 @@ app.use('/api', furnitureRouter);
 app.use('/api', imageSliderRouter);
 
 // ssl
-const privateKey = fs.readFileSync('/etc/ssl/certs/pkey.key', 'utf8');
-const certificate = fs.readFileSync('/etc/ssl/certs/cert.crt', 'utf8');
+const privateKey = fs.readFileSync('/etc/ssl/certs/private.key', 'utf8');
+const certificate = fs.readFileSync('/etc/ssl/certs/certificate.crt', 'utf8');
+const ca = fs.readFileSync('/etc/ssl/certs/ca_bundle.crt', 'utf8');
 const credentials = {
     key: privateKey,
-    cert: certificate
+    cert: certificate,
+    ca: ca
 };
 
 //server
