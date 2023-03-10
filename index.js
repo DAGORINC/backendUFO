@@ -35,24 +35,24 @@ app.use('/api', furnitureRouter);
 app.use('/api', imageSliderRouter);
 app.use('/api', viewCounterRouter);
 
-// // ssl
-// const privateKey = fs.readFileSync('/etc/ssl/certs/private.key', 'utf8');
-// const certificate = fs.readFileSync('/etc/ssl/certs/certificate.crt', 'utf8');
-// const ca = fs.readFileSync('/etc/ssl/certs/ca_bundle.crt', 'utf8');
-// const credentials = {
-//     key: privateKey,
-//     cert: certificate,
-//     ca: ca
-// };
+// ssl
+const privateKey = fs.readFileSync('/etc/ssl/certs/private.key', 'utf8');
+const certificate = fs.readFileSync('/etc/ssl/certs/certificate.crt', 'utf8');
+const ca = fs.readFileSync('/etc/ssl/certs/ca_bundle.crt', 'utf8');
+const credentials = {
+    key: privateKey,
+    cert: certificate,
+    ca: ca
+};
 
-// //server
-// const httpsServer = https.createServer(credentials, app);
+//server
+const httpsServer = https.createServer(credentials, app);
 
-// httpsServer.listen(port, () => {
-//     console.log(`Serwer działa na porcie: ${port}`);
-// });
-
-
-app.listen(port, function () {
+httpsServer.listen(port, () => {
     console.log(`Serwer działa na porcie: ${port}`);
 });
+
+
+// app.listen(port, function () {
+//     console.log(`Serwer działa na porcie: ${port}`);
+// });
