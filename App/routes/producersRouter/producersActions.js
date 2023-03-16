@@ -4,7 +4,7 @@ const fs = require('fs');
 const getAllProducers = async (req, res) => {
 
     try {
-        const producers = await Producer.find({});
+        const producers = await Producer.find({}).sort({ name: 1 });
         if (!producers) return res.status(400).json({ message: `Nie znaleziono producentów.` })
 
         res.status(200).json({
