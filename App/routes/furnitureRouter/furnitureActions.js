@@ -66,6 +66,7 @@ const saveFurniture = async (req, res) => {
         image: req.file.path
     })
 
+
     try {
 
         if (!await newFurniture.save()) {
@@ -127,16 +128,15 @@ const editFurniture = async (req, res) => {
             imageToDelete = furniture.image;
         }
 
-
         if (name) furniture.name = name;
-        if (description) {furniture.description = description} else furniture.description = '';
+        if (description) { furniture.description = description } else furniture.description = '';
         if (producer) furniture.producer = producer;
-        if (partCollection) {furniture.partCollection = partCollection} else furniture.partCollection = '';
-        if (price) {furniture.price = price} else furniture.price = 0;
-        if (width) {furniture.width = width} else furniture.width = 0;
-        if (depth) {furniture.depth = depth} else furniture.depth = 0;
-        if (height) {furniture.height = height} else furniture.height = 0;
-        if (crossed) {furniture.crossed = crossed} else furniture.crossed = 0;
+        if (partCollection) { furniture.partCollection = partCollection } else furniture.partCollection = '';
+        if (price) { furniture.price = price } else furniture.price = 0;
+        if (width) { furniture.width = width } else furniture.width = 0;
+        if (depth) { furniture.depth = depth } else furniture.depth = 0;
+        if (height) { furniture.height = height } else furniture.height = 0;
+        if (crossed) { furniture.crossed = crossed } else furniture.crossed = 0;
         if (designedForTheLivingRoom) furniture.designedForTheLivingRoom = designedForTheLivingRoom;
         if (designedForTheKitchen) furniture.designedForTheKitchen = designedForTheKitchen;
         if (designedForTheBedroom) furniture.designedForTheBedroom = designedForTheBedroom;
@@ -151,7 +151,10 @@ const editFurniture = async (req, res) => {
 
         if (!await furniture.save()) return res.status(400).json({ message: `Nie odnaleziono mebla` });
 
-        if (imageToDelete) fs.unlinkSync(imageToDelete);
+        if (imageToDelete) {
+            fs.unlinkSync(imageToDelete)
+            fs.unlinkSync(imageToDelete.replace('furnituresImages', 'furnituresImages/thumbnailImages'))
+        };
 
         res.status(201).json({
             message: `Success`,
@@ -177,6 +180,7 @@ const deleteFurniture = async (req, res) => {
         if (!await furniture.deleteOne({ _id: _id })) return res.status(400).json({ message: `Nie usunięto mebla` });
 
         fs.unlinkSync(furniture.image)
+        fs.unlinkSync(furniture.image.replace('furnituresImages', 'furnituresImages/thumbnailImages'));
         res.sendStatus(204);
 
     } catch (error) {
