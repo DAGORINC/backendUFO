@@ -4,6 +4,6 @@ const storageActions = require('./storageActions');
 const authMiddleware = require('../../middlewares/is-authMiddleware');
 
 // Endpoint do pobierania folderu storage
-router.get('/storage/download', authMiddleware, storageActions.checkStorageFolder, storageActions.downloadStorageFolder);
+router.get('/storage/download', storageActions.checkStorageFolder, storageActions.downloadStorageFolder);
 
 module.exports = router;
