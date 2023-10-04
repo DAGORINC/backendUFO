@@ -1,5 +1,10 @@
 const multer = require('multer');
 
+const storageFolder = 'storage/CSVfiles';
+if (!fs.existsSync(storageFolder)) {
+  fs.mkdirSync(storageFolder, { recursive: true });
+}
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'storage/CSVfiles');
