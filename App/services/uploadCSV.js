@@ -1,4 +1,5 @@
 const multer = require('multer');
+const fs = require('fs')
 
 const storageFolder = 'storage/CSVfiles';
 if (!fs.existsSync(storageFolder)) {
