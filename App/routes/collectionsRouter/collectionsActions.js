@@ -9,9 +9,7 @@ const getAllCollections = async (req, res) => {
 
         res.status(200).json({
             message: 'Success',
-            data: {
-                collections: collections
-            }
+            collections: collections
         })
 
     } catch (error) {
@@ -30,9 +28,7 @@ const getCollection = async (req, res) => {
 
         res.status(200).json({
             message: 'Success',
-            data: {
-                collection: collection
-            }
+            collection: collection
         })
 
     } catch (error) {
@@ -42,7 +38,7 @@ const getCollection = async (req, res) => {
 }
 
 const saveCollection = async (req, res) => {
-
+    
     const newCollection = new Collections({
         name: req.body.name,
         producer: req.body.producer,
@@ -60,9 +56,7 @@ const saveCollection = async (req, res) => {
 
         res.status(201).json({
             message: `Dodano kolekcję ${newCollection.name} do bazy`,
-            data: {
-                newCollection: newCollection
-            }
+            newCollection: newCollection
         });
 
     } catch (error) {
@@ -75,7 +69,7 @@ const saveCollection = async (req, res) => {
 }
 
 const editCollection = async (req, res) => {
-
+    
     try {
         let image;
         const _id = req.params._id;
@@ -105,9 +99,7 @@ const editCollection = async (req, res) => {
 
         res.status(201).json({
             message: 'Success',
-            data: {
-                collection: collection
-            }
+            collection: collection
         })
         
     } catch (error) {

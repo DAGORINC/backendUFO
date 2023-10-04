@@ -6,6 +6,7 @@ const furnitureRouter = require('./App/routes/furnitureRouter/furnitureRouter');
 const promotionalFurnitureRouter = require('./App/routes/promotionalFurnitureRouter/promotionalFurnitureRouter');
 const imageSliderRouter = require('./App/routes/imageSlider/imageSliderRouter');
 const viewCounterRouter = require('./App/routes/viewCounter/viewCounterRouter');
+const storageRouter = require('./App/routes/storageRouter/storageRouter')
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
@@ -36,6 +37,7 @@ app.use('/api', furnitureRouter);
 app.use('/api', promotionalFurnitureRouter);
 app.use('/api', imageSliderRouter);
 app.use('/api', viewCounterRouter);
+app.use('/api', storageRouter);
 
 // ssl
 const privateKey = fs.readFileSync('/etc/ssl/certs/private.key', 'utf8');

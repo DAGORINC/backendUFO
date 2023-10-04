@@ -9,9 +9,7 @@ const getAllFurniture = async (req, res) => {
 
         res.status(200).json({
             message: `Success`,
-            data: {
-                furniture: furniture
-            }
+            furniture: furniture
         })
 
     } catch (error) {
@@ -30,9 +28,7 @@ const getPieceOfFurniture = async (req, res) => {
 
         res.status(200).json({
             message: `Success`,
-            data: {
-                furniture: furniture
-            }
+            furniture: furniture
         })
 
     } catch (error) {
@@ -66,9 +62,7 @@ const saveFurniture = async (req, res) => {
 
         res.status(201).json({
             message: `Dodano ${newFurniture.name} do bazy`,
-            data: {
-                newFurniture: newFurniture
-            }
+            newFurniture: newFurniture
         });
 
     } catch (error) {
@@ -125,9 +119,7 @@ const editFurniture = async (req, res) => {
 
         res.status(201).json({
             message: `Success`,
-            data: {
-                furniture: furniture
-            }
+            editedFurniture: furniture
         })
 
     } catch (error) {

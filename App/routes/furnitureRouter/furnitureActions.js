@@ -1,5 +1,7 @@
 const Furniture = require('../../DataBase/models/furniture');
 const fs = require('fs');
+const { Parser } = require('json2csv')
+const csv = require('csv-parser');
 
 const getAllFurniture = async (req, res) => {
 
@@ -9,9 +11,7 @@ const getAllFurniture = async (req, res) => {
 
         res.status(200).json({
             message: `Success`,
-            data: {
-                furniture: furniture
-            }
+            furniture: furniture
         })
 
     } catch (error) {
@@ -30,9 +30,7 @@ const getPieceOfFurniture = async (req, res) => {
 
         res.status(200).json({
             message: `Success`,
-            data: {
-                furniture: furniture
-            }
+            furniture: furniture
         })
 
     } catch (error) {
@@ -78,9 +76,7 @@ const saveFurniture = async (req, res) => {
 
         res.status(201).json({
             message: `Dodano ${newFurniture.name} do bazy`,
-            data: {
-                newFurniture: newFurniture
-            }
+            newFurniture: newFurniture
         });
 
     } catch (error) {
@@ -158,9 +154,7 @@ const editFurniture = async (req, res) => {
 
         res.status(201).json({
             message: `Success`,
-            data: {
-                furniture: furniture
-            }
+            editedFurniture: furniture
         })
 
     } catch (error) {
@@ -189,6 +183,69 @@ const deleteFurniture = async (req, res) => {
 
 }
 
+
+// Kontroler do przesyłania pliku CSV i dodawania danych do bazy
+const uploadCSV = async (req, res) => {
+    try {
+        const { file } = req; // Plik CSV
+
+        if (!file) {
+            return res.status(400).json({ message: 'Brak pliku CSV.' });
+        }
+
+        const results = [];
+
+        fs.createReadStream(file.path)
+            .pipe(csv({ separator: ';' })) // Ustaw separator na średnik
+            .on('data', (row) => {
+                // Tworzenie nowego mebla na podstawie danych z pliku CSV
+                const newFurniture = new Furniture({
+                    name: row.name,
+                    description: row.description,
+                    producer: row.producer,
+                    partCollection: row.partCollection,
+                    price: row.price,
+                    width: row.width,
+                    depth: row.depth,
+                    height: row.height,
+                    crossed: row.crossed,
+                    isPriceVissible: row.isPriceVissible,
+                    designedForTheLivingRoom: row.designedForTheLivingRoom,
+                    designedForTheKitchen: row.designedForTheKitchen,
+                    designedForTheBedroom: row.designedForTheBedroom,
+                    designedForTheOffice: row.designedForTheOffice,
+                    designedForTheYouthRoom: row.designedForTheYouthRoom,
+                    designedForTheHallway: row.designedForTheHallway,
+                    designedForTheChildrensRoom: row.designedForTheChildrensRoom,
+                    designedForTheBathroom: row.designedForTheBathroom,
+                    categories: row.categories,
+                    image: row.image,
+                });
+
+                results.push(newFurniture);
+            })
+            .on('end', async () => {
+                // Dodawanie wszystkich mebli do bazy danych
+                const savedFurniture = await Furniture.insertMany(results);
+
+                res.status(201).json({
+                    message: `Dodano ${savedFurniture.length} mebli do bazy.`,
+                    data: {
+                        newFurniture: savedFurniture,
+                    },
+                });
+
+                // Usunięcie pliku CSV po zakończeniu operacji
+                fs.unlinkSync(file.path);
+            });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            message: 'Wystąpił błąd podczas przetwarzania pliku CSV.',
+        });
+    }
+};
+
 const deleteImage = async (req, res) => {
 
 }
@@ -199,7 +256,8 @@ const furnitureActions = {
     saveFurniture,
     editFurniture,
     deleteFurniture,
-    deleteImage
+    deleteImage,
+    uploadCSV,
 }
 
 module.exports = furnitureActions;

@@ -9,9 +9,7 @@ const getAllProducers = async (req, res) => {
 
         res.status(200).json({
             message: 'Success',
-            data: {
-                producers: producers
-            }
+            producers: producers,
 
         })
     } catch (error) {
@@ -25,7 +23,7 @@ const getProducer = async (req, res) => {
     try {
         const _id = req.params._id;
         const producer = await Producer.findOne({ _id: _id });
-        
+
 
         if (!producer) return res.status(400).json({ message: `Nie znaleziono producenta.` })
 
@@ -61,9 +59,7 @@ const saveProducer = async (req, res) => {
 
         res.status(201).json({
             message: `Zapisano ${newProducer.name} w bazie producentów!`,
-            data: {
-                newProducer: newProducer
-            }
+            newProducer: newProducer
         });
 
     } catch (error) {
@@ -81,7 +77,7 @@ const editProducer = async (req, res) => {
 
         const name = req.body.name;
         const link = req.body.link;
-        if(req.file) {logo = req.file.path}
+        if (req.file) { logo = req.file.path }
 
         let logoToDelete;
 
@@ -105,9 +101,7 @@ const editProducer = async (req, res) => {
 
         res.status(201).json({
             message: `Success`,
-            data: {
-                producer: producer
-            }
+            editedProducer: producer
         })
 
     } catch (error) {

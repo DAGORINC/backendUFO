@@ -9,9 +9,7 @@ const getAllImages = async (req, res) => {
 
         res.status(200).json({
             message: 'Sucess',
-            data: {
-                images: images
-            }
+            images: images
         })
 
     } catch (error) {
@@ -39,9 +37,7 @@ const saveImage = async (req, res) => {
 
         res.status(201).json({
             message: `Zapisano slajd w bazie`,
-            data: {
-                newImage: newImage
-            }
+            newImage: newImage
         });
 
     } catch (error) {

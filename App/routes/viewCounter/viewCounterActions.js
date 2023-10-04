@@ -5,13 +5,11 @@ const getViewCount = async (req, res) => {
 
     
     try {
-    const count = await viewCounter.countDocuments();
+    const counts = await viewCounter.countDocuments();
 
     res.status(200).json({
         message: 'Success',
-        data: {
-            count: count
-        }
+        counts: counts
 
     })
     
