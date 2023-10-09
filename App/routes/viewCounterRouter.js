@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const viewCounterActions = require('./viewCounterActions');
+const viewCounterActions = require('../controllers/viewCounterActions');
 
 router.get('/viewCounter', viewCounterActions.getViewCount);
 

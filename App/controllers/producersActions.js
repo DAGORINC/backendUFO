@@ -1,4 +1,4 @@
-const Producer = require('../../DataBase/models/producer');
+const Producer = require('../DataBase/models/producer');
 const fs = require('fs');
 
 const getAllProducers = async (req, res) => {

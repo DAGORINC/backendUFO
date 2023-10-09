@@ -1,4 +1,4 @@
-const PromotionalFurniture = require('../../DataBase/models/promotionalFurniture');
+const PromotionalFurniture = require('../DataBase/models/promotionalFurniture');
 const fs = require('fs');
 
 const getAllFurniture = async (req, res) => {

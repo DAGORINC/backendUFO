@@ -1,12 +1,13 @@
 const express = require('express');
 require('dotenv').config();
-const producersRouter = require('./App/routes/producersRouter/producersRouter');
-const collectionsRouter = require('./App/routes/collectionsRouter/collectionsRouter');
-const furnitureRouter = require('./App/routes/furnitureRouter/furnitureRouter');
-const promotionalFurnitureRouter = require('./App/routes/promotionalFurnitureRouter/promotionalFurnitureRouter');
-const imageSliderRouter = require('./App/routes/imageSlider/imageSliderRouter');
-const viewCounterRouter = require('./App/routes/viewCounter/viewCounterRouter');
-const storageRouter = require('./App/routes/storageRouter/storageRouter')
+const producersRouter = require('./App/routes/producersRouter');
+const collectionsRouter = require('./App/routes/collectionsRouter');
+const furnitureRouter = require('./App/routes/furnitureRouter');
+const promotionalFurnitureRouter = require('./App/routes/promotionalFurnitureRouter');
+const imageSliderRouter = require('./App/routes/imageSliderRouter');
+const viewCounterRouter = require('./App/routes/viewCounterRouter');
+const storageRouter = require('./App/routes/storageRouter');
+const userRouter = require('./App/routes/userRouter');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
@@ -38,25 +39,30 @@ app.use('/api', promotionalFurnitureRouter);
 app.use('/api', imageSliderRouter);
 app.use('/api', viewCounterRouter);
 app.use('/api', storageRouter);
+app.use('/api/users', userRouter);
+
+app.get('/admin', (req, res) => {
+    res.send('Witaj w panelu admina')
+})
 
 // ssl
-const privateKey = fs.readFileSync('/etc/ssl/certs/private.key', 'utf8');
-const certificate = fs.readFileSync('/etc/ssl/certs/certificate.crt', 'utf8');
-const ca = fs.readFileSync('/etc/ssl/certs/ca_bundle.crt', 'utf8');
-const credentials = {
-    key: privateKey,
-    cert: certificate,
-    ca: ca
-};
+// const privateKey = fs.readFileSync('/etc/ssl/certs/private.key', 'utf8');
+// const certificate = fs.readFileSync('/etc/ssl/certs/certificate.crt', 'utf8');
+// const ca = fs.readFileSync('/etc/ssl/certs/ca_bundle.crt', 'utf8');
+// const credentials = {
+//     key: privateKey,
+//     cert: certificate,
+//     ca: ca
+// };
 
 //server
-const httpsServer = https.createServer(credentials, app);
+// const httpsServer = https.createServer(credentials, app);
 
-httpsServer.listen(port, () => {
-    console.log(`Serwer działa na porcie: ${port}`);
-});
-
-
-// app.listen(port, function () {
+// httpsServer.listen(port, () => {
 //     console.log(`Serwer działa na porcie: ${port}`);
 // });
+
+
+app.listen(port, function () {
+    console.log(`Serwer działa na porcie: ${port}`);
+});

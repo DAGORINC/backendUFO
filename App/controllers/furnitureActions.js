@@ -1,4 +1,4 @@
-const Furniture = require('../../DataBase/models/furniture');
+const Furniture = require('../DataBase/models/furniture');
 const fs = require('fs');
 const { Parser } = require('json2csv')
 const csv = require('csv-parser');

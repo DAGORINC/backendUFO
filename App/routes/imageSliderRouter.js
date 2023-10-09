@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const upload = require('../../services/uploaderImageSlider');
-const authMiddleware = require('../../middlewares/is-authMiddleware');
+const upload = require('../services/uploaderImageSlider');
+const authMiddleware = require('../middlewares/is-authMiddleware');
 
-const imageSliderActions = require('./imageSliderActions');
+const imageSliderActions = require('../controllers/imageSliderActions');
 
 router.get('/imageSlider', imageSliderActions.getAllImages);
 

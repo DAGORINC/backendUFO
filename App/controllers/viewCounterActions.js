@@ -1,4 +1,4 @@
-const viewCounter = require ('../../DataBase/models/viewCounter')
+const viewCounter = require ('../DataBase/models/viewCounter')
 
 
 const getViewCount = async (req, res) => {

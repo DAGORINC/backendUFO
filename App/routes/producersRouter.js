@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../../services/uploaderProducers');
-const authMiddleware = require('../../middlewares/is-authMiddleware')
-const producersActions = require('./producersActions');
+const upload = require('../services/uploaderProducers');
+const authMiddleware = require('../middlewares/is-authMiddleware')
+const producersActions = require('../controllers/producersActions');
 
 router.get('/producers', producersActions.getAllProducers);
 

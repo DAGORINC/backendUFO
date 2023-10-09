@@ -1,4 +1,4 @@
-const Collections = require('../../DataBase/models/collections');
+const Collections = require('../DataBase/models/collections');
 const fs = require('fs');
 
 const getAllCollections = async (req, res) => {

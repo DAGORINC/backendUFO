@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const { upload, resizeImage } = require('../../services/uploaderPromotionalFurniture');
-const authMiddleware = require('../../middlewares/is-authMiddleware');
+const { upload, resizeImage } = require('../services/uploaderPromotionalFurniture');
+const authMiddleware = require('../middlewares/is-authMiddleware');
 
-const promotionalFurnitureActions = require('./promotionalFurnitureActions');
+const promotionalFurnitureActions = require('../controllers/promotionalFurnitureActions');
 
 router.get('/promotionalFurniture', promotionalFurnitureActions.getAllFurniture);
 

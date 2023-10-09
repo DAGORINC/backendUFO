@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const { upload, resizeImage } = require('../../services/uploaderFurniture');
-const authMiddleware = require('../../middlewares/is-authMiddleware');
-const uploadCSV = require('../../services/uploadCSV')
+const { upload, resizeImage } = require('../services/uploaderFurniture');
+const authMiddleware = require('../middlewares/is-authMiddleware');
+const uploadCSV = require('../services/uploadCSV')
 
-const furnitureActions = require('./furnitureActions');
+const furnitureActions = require('../controllers/furnitureActions');
 
 router.get('/furniture', furnitureActions.getAllFurniture);
 

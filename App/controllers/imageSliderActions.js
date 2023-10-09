@@ -1,4 +1,4 @@
-const ImageSlider = require('../../DataBase/models/imageSlider');
+const ImageSlider = require('../DataBase/models/imageSlider');
 const fs = require('fs');
 
 const getAllImages = async (req, res) => {

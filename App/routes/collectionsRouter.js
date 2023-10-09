@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const upload = require('../../services/uploaderCollections');
-const authMiddleware = require('../../middlewares/is-authMiddleware');
+const upload = require('../services/uploaderCollections');
+const authMiddleware = require('../middlewares/is-authMiddleware');
 
-const collectionsActions = require('./collectionsActions');
+const collectionsActions = require('../controllers/collectionsActions');
 
 router.get('/collections', collectionsActions.getAllCollections);
 
